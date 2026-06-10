@@ -3,24 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AVNIX | Engineering Intelligent Digital Systems</title>
-  <meta name="description" content="AVNIX creates efficient, scalable, and intelligent digital solutions for modern businesses." />
+  <title>AVNIX | Engineering Scalable Digital Systems</title>
+  <meta name="description" content="AVNIX delivers high-performance software, automation systems, and cloud infrastructure designed for reliability, scalability, and long-term growth." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Sora:wght@600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --primary: #0F172A;
-      --secondary: #2563EB;
-      --background: #FFFFFF;
-      --text: #111827;
-      --accent: #14B8A6;
-      --muted: #6B7280;
-      --border: #E5E7EB;
-      --surface: #F9FAFB;
+      --navy: #0B1220;
+      --blue: #1D4ED8;
+      --teal: #14B8A6;
+      --gold: #FBBF24;
+      --background: #F8FAFC;
+      --surface: #E2E8F0;
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --white: #FFFFFF;
+      --border: #E2E8F0;
+      --shadow-sm: 0 1px 3px rgba(11, 18, 32, 0.06);
+      --shadow-md: 0 4px 12px rgba(11, 18, 32, 0.08);
       --max: 1120px;
       --heading: "Sora", "Inter", system-ui, sans-serif;
       --body: "Inter", system-ui, sans-serif;
+      --transition: 0.2s ease;
     }
 
     * {
@@ -33,7 +38,7 @@
 
     body {
       margin: 0;
-      color: var(--text);
+      color: var(--text-primary);
       font-family: var(--body);
       font-size: 1rem;
       line-height: 1.6;
@@ -47,7 +52,7 @@
     h1, h2, h3 {
       font-family: var(--heading);
       font-weight: 600;
-      color: var(--primary);
+      color: var(--navy);
       letter-spacing: -0.02em;
     }
 
@@ -61,12 +66,26 @@
       margin: 0 auto;
     }
 
+    /* Scroll fade-in */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* Header */
     .header {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: var(--background);
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
 
@@ -75,30 +94,35 @@
       align-items: center;
       justify-content: space-between;
       gap: 24px;
-      padding: 20px 0;
+      padding: 18px 0;
     }
 
     .brand {
       font-family: var(--heading);
-      font-size: 1.125rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      color: var(--primary);
+      font-size: 1.0625rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--navy);
     }
 
     .nav {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px 28px;
+      gap: 8px 24px;
     }
 
     .nav a {
-      font-size: 0.9375rem;
-      color: var(--muted);
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      transition: color var(--transition);
     }
 
-    .nav a:hover {
-      color: var(--primary);
+    .nav a:hover,
+    .nav a.active {
+      color: var(--blue);
     }
 
     /* Sections */
@@ -106,16 +130,12 @@
       padding: 80px 0;
     }
 
-    .section + .section {
-      border-top: 1px solid var(--border);
-    }
-
     .section-label {
-      font-size: 0.8125rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--secondary);
+      color: var(--blue);
       margin-bottom: 16px;
     }
 
@@ -125,7 +145,7 @@
     }
 
     .section-text {
-      color: var(--muted);
+      color: var(--text-secondary);
       max-width: 62ch;
     }
 
@@ -135,18 +155,26 @@
 
     /* Hero */
     .hero {
-      padding: 96px 0 80px;
+      position: relative;
+      padding: 100px 0 88px;
+      background: linear-gradient(
+        135deg,
+        var(--background) 0%,
+        #EFF6FF 45%,
+        rgba(20, 184, 166, 0.06) 100%
+      );
+      border-bottom: 1px solid var(--border);
     }
 
     .hero h1 {
-      font-size: clamp(2.25rem, 5vw, 3.5rem);
-      line-height: 1.1;
-      max-width: 18ch;
+      font-size: clamp(2.25rem, 5vw, 3.25rem);
+      line-height: 1.12;
+      max-width: 20ch;
       margin-bottom: 24px;
     }
 
     .hero-subtext {
-      color: var(--muted);
+      color: var(--text-secondary);
       font-size: 1.125rem;
       max-width: 58ch;
       margin-bottom: 36px;
@@ -168,33 +196,145 @@
       font-size: 0.9375rem;
       font-weight: 500;
       border: 1px solid var(--border);
-      background: var(--background);
-      color: var(--primary);
+      background: var(--white);
+      color: var(--navy);
+      cursor: pointer;
+      transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition), background var(--transition);
     }
 
     .button:hover {
-      border-color: var(--primary);
+      border-color: var(--blue);
+      box-shadow: var(--shadow-sm);
+      transform: translateY(-1px);
     }
 
     .button.primary {
-      background: var(--primary);
-      border-color: var(--primary);
-      color: #FFFFFF;
+      background: var(--blue);
+      border-color: var(--blue);
+      color: var(--white);
     }
 
     .button.primary:hover {
-      background: #1E293B;
-      border-color: #1E293B;
+      background: #1E40AF;
+      border-color: #1E40AF;
     }
 
-    /* Grids */
-    .grid-solutions {
+    .button.outline {
+      border-color: var(--blue);
+      color: var(--blue);
+      background: transparent;
+    }
+
+    .button.outline:hover {
+      background: rgba(29, 78, 216, 0.06);
+    }
+
+    .button.copied {
+      border-color: var(--teal);
+      color: var(--teal);
+    }
+
+    /* Services grid */
+    .grid-services {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 24px;
       margin-top: 40px;
     }
 
+    .service-card {
+      position: relative;
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--white);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+
+    .service-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+    }
+
+    .service-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+
+    .service-card--blue::before { background: var(--blue); }
+    .service-card--navy::before { background: var(--navy); }
+    .service-card--teal::before { background: var(--teal); }
+    .service-card--gradient::before {
+      background: linear-gradient(90deg, var(--blue), var(--teal));
+    }
+    .service-card--gray::before { background: #94A3B8; }
+
+    .service-icon {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 18px;
+      color: var(--blue);
+    }
+
+    .service-card--navy .service-icon { color: var(--navy); }
+    .service-card--teal .service-icon { color: var(--teal); }
+    .service-card--gray .service-icon { color: #64748B; }
+
+    .service-card h3 {
+      font-size: 1.0625rem;
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      color: var(--text-secondary);
+      font-size: 0.9375rem;
+      line-height: 1.55;
+    }
+
+    /* Solutions */
+    .solutions-list {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .solution-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 24px 28px;
+      border-radius: 6px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      transition: background var(--transition);
+    }
+
+    .solution-item:nth-child(1) { background: rgba(29, 78, 216, 0.04); }
+    .solution-item:nth-child(2) { background: rgba(11, 18, 32, 0.03); }
+    .solution-item:nth-child(3) { background: rgba(20, 184, 166, 0.05); }
+    .solution-item:nth-child(4) { background: rgba(29, 78, 216, 0.03); }
+    .solution-item:nth-child(5) { background: rgba(71, 85, 105, 0.04); }
+
+    .solution-item h3 {
+      font-size: 1.0625rem;
+    }
+
+    .solution-item p {
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+      max-width: 48ch;
+      text-align: right;
+    }
+
+    /* Work */
     .grid-work {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -202,58 +342,82 @@
       margin-top: 40px;
     }
 
-    .grid-insights {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 24px;
-      margin-top: 40px;
-    }
-
-    /* Cards */
-    .card {
-      padding: 28px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background: var(--background);
-    }
-
-    .card h3 {
-      font-size: 1.0625rem;
-      margin-bottom: 10px;
-    }
-
-    .card p {
-      color: var(--muted);
-      font-size: 0.9375rem;
-      line-height: 1.55;
-    }
-
-    /* Work */
     .work-item {
       padding: 28px;
       border: 1px solid var(--border);
       border-radius: 8px;
-      background: var(--surface);
+      background: var(--white);
+      box-shadow: var(--shadow-sm);
     }
 
     .work-item .tag {
       display: inline-block;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--secondary);
-      margin-bottom: 12px;
+      color: var(--blue);
+      margin-bottom: 14px;
     }
 
     .work-item h3 {
       font-size: 1.0625rem;
-      margin-bottom: 8px;
+      margin-bottom: 16px;
     }
 
-    .work-item p {
-      color: var(--muted);
-      font-size: 0.9375rem;
+    .work-detail {
+      margin-bottom: 10px;
+      font-size: 0.875rem;
+      line-height: 1.55;
+    }
+
+    .work-detail .label {
+      font-weight: 600;
+      font-size: 0.6875rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .work-detail--problem {
+      color: var(--text-secondary);
+    }
+
+    .work-detail--solution .label {
+      color: var(--blue);
+    }
+
+    .work-detail--solution {
+      color: var(--text-primary);
+    }
+
+    .work-detail--result .label {
+      color: var(--teal);
+    }
+
+    .work-detail--result strong {
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    .work-detail--result .metric {
+      color: var(--teal);
+      font-weight: 700;
+    }
+
+    .work-bar {
+      margin-top: 18px;
+      height: 4px;
+      background: var(--surface);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .work-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--blue), var(--teal));
+      border-radius: 2px;
     }
 
     /* Why AVNIX */
@@ -263,6 +427,8 @@
       border: 1px solid var(--border);
       border-radius: 8px;
       overflow: hidden;
+      background: var(--white);
+      box-shadow: var(--shadow-sm);
     }
 
     .strength-item {
@@ -271,51 +437,72 @@
       gap: 16px;
       padding: 20px 24px;
       border-bottom: 1px solid var(--border);
-      background: var(--background);
     }
 
     .strength-item:last-child {
       border-bottom: none;
     }
 
-    .strength-item::before {
-      content: "";
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
+    .strength-icon {
+      width: 24px;
+      height: 24px;
       flex-shrink: 0;
+      color: var(--teal);
     }
 
     .strength-item span {
       font-weight: 500;
-      color: var(--primary);
+      color: var(--navy);
     }
 
     /* Insights */
+    .grid-insights {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+
     .insight-card {
-      padding: 24px;
+      padding: 28px;
       border: 1px solid var(--border);
       border-radius: 8px;
+      background: var(--white);
+      transition: box-shadow var(--transition);
+    }
+
+    .insight-card:hover {
+      box-shadow: var(--shadow-sm);
     }
 
     .insight-card .topic {
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--text-secondary);
       margin-bottom: 10px;
     }
 
     .insight-card h3 {
       font-size: 1rem;
       margin-bottom: 8px;
+      display: inline;
+      background-image: linear-gradient(var(--blue), var(--blue));
+      background-size: 0% 2px;
+      background-repeat: no-repeat;
+      background-position: 0 100%;
+      transition: background-size var(--transition);
+    }
+
+    .insight-card:hover h3 {
+      background-size: 100% 2px;
     }
 
     .insight-card p {
-      color: var(--muted);
+      color: var(--text-secondary);
       font-size: 0.875rem;
+      margin-top: 8px;
     }
 
     /* Contact */
@@ -324,8 +511,9 @@
       padding: 40px;
       border: 1px solid var(--border);
       border-radius: 8px;
-      background: var(--surface);
+      background: var(--white);
       max-width: 640px;
+      box-shadow: var(--shadow-sm);
     }
 
     .contact-block blockquote {
@@ -333,32 +521,39 @@
       padding: 0;
       border: none;
       font-size: 1.0625rem;
-      color: var(--muted);
+      color: var(--text-secondary);
       line-height: 1.7;
     }
 
     .contact-block a {
-      color: var(--secondary);
+      color: var(--blue);
       font-weight: 600;
     }
 
     .contact-block a:hover {
-      color: var(--primary);
+      color: var(--navy);
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+      margin-top: 24px;
     }
 
     .contact-email {
-      display: inline-block;
-      margin-top: 20px;
       font-family: var(--heading);
       font-size: 1.25rem;
       font-weight: 600;
-      color: var(--primary);
+      color: var(--navy);
     }
 
     /* Footer */
     .footer {
-      padding: 40px 0 48px;
-      border-top: 1px solid var(--border);
+      padding: 48px 0;
+      background: var(--navy);
+      color: rgba(255, 255, 255, 0.75);
     }
 
     .footer-inner {
@@ -366,29 +561,65 @@
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 20px;
       font-size: 0.875rem;
-      color: var(--muted);
     }
 
     .footer-brand {
       font-family: var(--heading);
-      font-weight: 600;
-      color: var(--primary);
-      letter-spacing: 0.04em;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.1em;
+      font-size: 0.9375rem;
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
     }
 
     .footer a {
-      color: var(--secondary);
+      color: rgba(255, 255, 255, 0.75);
+      transition: color var(--transition);
     }
 
     .footer a:hover {
-      color: var(--primary);
+      color: var(--white);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 16px;
+    }
+
+    .footer-social a {
+      display: flex;
+      opacity: 0.7;
+      transition: opacity var(--transition);
+    }
+
+    .footer-social a:hover {
+      opacity: 1;
+    }
+
+    .footer-social svg {
+      width: 18px;
+      height: 18px;
     }
 
     @media (max-width: 900px) {
       .grid-work {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .solution-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .solution-item p {
+        text-align: left;
       }
     }
 
@@ -404,11 +635,11 @@
       }
 
       .nav {
-        gap: 8px 20px;
+        gap: 8px 16px;
       }
 
       .hero {
-        padding: 64px 0 56px;
+        padding: 72px 0 64px;
       }
 
       .section {
@@ -434,6 +665,17 @@
       html {
         scroll-behavior: auto;
       }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+
+      .button:hover,
+      .service-card:hover {
+        transform: none;
+      }
     }
   </style>
 </head>
@@ -442,145 +684,341 @@
     <div class="shell header-inner">
       <a href="#home" class="brand">AVNIX</a>
       <nav class="nav" aria-label="Main navigation">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#solutions">Solutions</a>
-        <a href="#work">Work</a>
-        <a href="#insights">Insights</a>
+        <a href="#home" data-nav="home">Home</a>
+        <a href="#company" data-nav="company">Company</a>
+        <a href="#services" data-nav="services">Services</a>
+        <a href="#solutions" data-nav="solutions">Solutions</a>
+        <a href="#work" data-nav="work">Work</a>
+        <a href="#insights" data-nav="insights">Insights</a>
       </nav>
     </div>
   </header>
 
   <main>
     <section class="shell hero" id="home">
-      <h1>Engineering Intelligent Digital Systems</h1>
+      <h1>Engineering Scalable Digital Systems for Modern Enterprises</h1>
       <p class="hero-subtext">
-        AVNIX builds scalable software, automation systems, and modern digital infrastructure for businesses and teams.
+        AVNIX delivers high-performance software, automation systems, and cloud infrastructure designed for reliability, scalability, and long-term growth.
       </p>
       <div class="hero-actions">
-        <a class="button primary" href="#solutions">Explore Solutions</a>
-        <a class="button" href="#work">View Work</a>
+        <a class="button primary" href="#services">Explore Services</a>
+        <a class="button outline" href="#solutions">View Solutions</a>
       </div>
     </section>
 
-    <section class="shell section" id="about">
-      <p class="section-label">About</p>
-      <h2 class="section-title">Build Smarter Systems for a Connected Digital Future</h2>
+    <section class="shell section reveal" id="company">
+      <p class="section-label">Company</p>
+      <h2 class="section-title">Engineering Scalable Digital Systems with Precision and Clarity</h2>
       <p class="section-text">
-        AVNIX is a technology-focused brand delivering modern digital solutions including automation, software development, and system design.
+        AVNIX is a technology engineering company focused on building scalable, secure, and efficient digital systems.
       </p>
       <p class="section-text">
-        We focus on performance, scalability, and clean engineering.
+        We combine software architecture, automation, and cloud engineering to deliver enterprise-grade solutions.
       </p>
     </section>
 
-    <section class="shell section" id="solutions">
+    <section class="shell section reveal" id="services">
+      <p class="section-label">Services</p>
+      <h2 class="section-title">Core Engineering Capabilities</h2>
+      <div class="grid-services">
+        <article class="service-card service-card--blue">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3>Custom Software Engineering</h3>
+          <p>Production-grade applications built with maintainable architecture, rigorous standards, and long-term scalability in mind.</p>
+        </article>
+        <article class="service-card service-card--navy">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3>System Architecture Design</h3>
+          <p>Structured system blueprints that define service boundaries, data flows, and resilience patterns for complex organizations.</p>
+        </article>
+        <article class="service-card service-card--teal">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3>Automation &amp; Workflow Systems</h3>
+          <p>Intelligent workflow automation that reduces manual overhead and improves operational consistency across teams.</p>
+        </article>
+        <article class="service-card service-card--gradient">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3>Cloud Infrastructure Engineering</h3>
+          <p>Reliable cloud environments engineered for scale, security, and high availability with minimal operational friction.</p>
+        </article>
+        <article class="service-card service-card--gray">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3>API &amp; Backend Development</h3>
+          <p>Robust APIs and backend services designed for performance, integration flexibility, and enterprise-grade reliability.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="shell section reveal" id="solutions">
       <p class="section-label">Solutions</p>
-      <h2 class="section-title">Solutions</h2>
-      <div class="grid-solutions">
-        <article class="card">
-          <h3>Software Development</h3>
-          <p>Custom applications built with maintainable architecture and production-ready standards.</p>
-        </article>
-        <article class="card">
-          <h3>Automation Systems</h3>
-          <p>Workflow automation that reduces manual overhead and improves operational consistency.</p>
-        </article>
-        <article class="card">
-          <h3>AI Integration</h3>
-          <p>Practical AI capabilities integrated into existing systems with measurable outcomes.</p>
-        </article>
-        <article class="card">
-          <h3>Digital Infrastructure</h3>
-          <p>Reliable cloud and system infrastructure designed for scale, security, and stability.</p>
-        </article>
-        <article class="card">
-          <h3>Custom Web Applications</h3>
-          <p>Modern web platforms tailored to business workflows and performance requirements.</p>
-        </article>
+      <h2 class="section-title">Industry-Focused Digital Systems</h2>
+      <div class="solutions-list">
+        <div class="solution-item">
+          <h3>Enterprise Digital Systems</h3>
+          <p>Unified platforms that connect departments, data, and workflows across large organizations.</p>
+        </div>
+        <div class="solution-item">
+          <h3>Business Automation Platforms</h3>
+          <p>End-to-end automation layers that streamline operations and reduce process bottlenecks.</p>
+        </div>
+        <div class="solution-item">
+          <h3>Scalable SaaS Infrastructure</h3>
+          <p>Multi-tenant architectures built to support growth, tenant isolation, and global deployment.</p>
+        </div>
+        <div class="solution-item">
+          <h3>Data Integration Systems</h3>
+          <p>Reliable pipelines and connectors that unify disparate data sources into actionable systems.</p>
+        </div>
+        <div class="solution-item">
+          <h3>Cloud-Native Applications</h3>
+          <p>Containerized, resilient applications designed for modern cloud environments and DevOps workflows.</p>
+        </div>
       </div>
     </section>
 
-    <section class="shell section" id="work">
+    <section class="shell section reveal" id="work">
       <p class="section-label">Work</p>
-      <h2 class="section-title">Work</h2>
+      <h2 class="section-title">Case Studies</h2>
       <div class="grid-work">
         <article class="work-item">
-          <span class="tag">Project</span>
-          <h3>Enterprise Workflow Platform</h3>
-          <p>End-to-end automation system for internal operations and cross-team coordination.</p>
+          <span class="tag">Enterprise Platform</span>
+          <h3>Workflow Automation System</h3>
+          <div class="work-detail work-detail--problem">
+            <span class="label">Problem</span>
+            Manual cross-department processes caused delays and inconsistent data handoffs.
+          </div>
+          <div class="work-detail work-detail--solution">
+            <span class="label">Solution</span>
+            Custom automation platform with integrated approval workflows and real-time status tracking.
+          </div>
+          <div class="work-detail work-detail--result">
+            <span class="label">Result</span>
+            <strong>Reduced processing time by <span class="metric">68%</span></strong> across three operational teams.
+          </div>
+          <div class="work-bar" aria-hidden="true"><div class="work-bar-fill" style="width: 68%"></div></div>
         </article>
         <article class="work-item">
-          <span class="tag">Case Study</span>
-          <h3>Scalable API Architecture</h3>
-          <p>Service-oriented redesign improving throughput, reliability, and deployment velocity.</p>
+          <span class="tag">API Architecture</span>
+          <h3>Service-Oriented Redesign</h3>
+          <div class="work-detail work-detail--problem">
+            <span class="label">Problem</span>
+            Monolithic backend limited deployment speed and created scaling bottlenecks under load.
+          </div>
+          <div class="work-detail work-detail--solution">
+            <span class="label">Solution</span>
+            Microservice architecture with API gateway, event-driven communication, and CI/CD pipelines.
+          </div>
+          <div class="work-detail work-detail--result">
+            <span class="label">Result</span>
+            <strong>Throughput increased <span class="metric">3.2×</span></strong> with zero-downtime deployment capability.
+          </div>
+          <div class="work-bar" aria-hidden="true"><div class="work-bar-fill" style="width: 82%"></div></div>
         </article>
         <article class="work-item">
-          <span class="tag">System Implementation</span>
-          <h3>Cloud Infrastructure Migration</h3>
-          <p>Structured migration to modern infrastructure with minimal downtime.</p>
+          <span class="tag">Cloud Migration</span>
+          <h3>Infrastructure Modernization</h3>
+          <div class="work-detail work-detail--problem">
+            <span class="label">Problem</span>
+            Legacy on-premise infrastructure created reliability risks and high maintenance overhead.
+          </div>
+          <div class="work-detail work-detail--solution">
+            <span class="label">Solution</span>
+            Phased cloud migration with container orchestration, monitoring, and automated failover systems.
+          </div>
+          <div class="work-detail work-detail--result">
+            <span class="label">Result</span>
+            <strong>Uptime improved to <span class="metric">99.97%</span></strong> with <span class="metric">40%</span> lower ops cost.
+          </div>
+          <div class="work-bar" aria-hidden="true"><div class="work-bar-fill" style="width: 95%"></div></div>
         </article>
       </div>
     </section>
 
-    <section class="shell section" id="why">
+    <section class="shell section reveal" id="why">
       <p class="section-label">Why AVNIX</p>
-      <h2 class="section-title">Why AVNIX</h2>
+      <h2 class="section-title">Built on Engineering Discipline</h2>
       <div class="strength-list">
-        <div class="strength-item"><span>Scalable architecture</span></div>
-        <div class="strength-item"><span>Clean engineering practices</span></div>
-        <div class="strength-item"><span>Performance-focused systems</span></div>
-        <div class="strength-item"><span>Modern technology stack</span></div>
-        <div class="strength-item"><span>Reliable delivery</span></div>
+        <div class="strength-item">
+          <svg class="strength-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Engineering-first approach</span>
+        </div>
+        <div class="strength-item">
+          <svg class="strength-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Scalable system architecture</span>
+        </div>
+        <div class="strength-item">
+          <svg class="strength-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Secure development practices</span>
+        </div>
+        <div class="strength-item">
+          <svg class="strength-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Performance-optimized solutions</span>
+        </div>
+        <div class="strength-item">
+          <svg class="strength-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Long-term maintainable systems</span>
+        </div>
       </div>
     </section>
 
-    <section class="shell section" id="insights">
+    <section class="shell section reveal" id="insights">
       <p class="section-label">Insights</p>
-      <h2 class="section-title">Insights</h2>
+      <h2 class="section-title">Engineering Perspectives</h2>
       <div class="grid-insights">
         <article class="insight-card">
           <p class="topic">System Design</p>
           <h3>Designing for Scale from Day One</h3>
-          <p>Principles for building systems that grow without costly rewrites.</p>
+          <p>Architectural principles that prevent costly rewrites as systems and teams grow.</p>
         </article>
         <article class="insight-card">
-          <p class="topic">Automation Ideas</p>
+          <p class="topic">Cloud Engineering</p>
+          <h3>Building Resilient Cloud Infrastructure</h3>
+          <p>Patterns for high availability, observability, and cost-efficient cloud operations.</p>
+        </article>
+        <article class="insight-card">
+          <p class="topic">Automation Strategy</p>
           <h3>Where Automation Creates Real Value</h3>
-          <p>Identifying high-impact workflows worth automating first.</p>
+          <p>Identifying high-impact workflows worth automating for measurable ROI.</p>
         </article>
         <article class="insight-card">
-          <p class="topic">Engineering Practices</p>
-          <h3>Clean Code in Production Systems</h3>
-          <p>Maintainability standards that keep teams moving fast over time.</p>
-        </article>
-        <article class="insight-card">
-          <p class="topic">Digital Transformation</p>
-          <h3>Modernizing Legacy Infrastructure</h3>
-          <p>A structured approach to upgrading systems without disrupting operations.</p>
+          <p class="topic">Software Architecture</p>
+          <h3>Service Boundaries That Last</h3>
+          <p>Defining clean module and service boundaries for systems that evolve gracefully.</p>
         </article>
       </div>
     </section>
 
-    <section class="shell section" id="contact">
+    <section class="shell section reveal" id="contact">
       <p class="section-label">Contact</p>
-      <h2 class="section-title">Contact</h2>
+      <h2 class="section-title">Get in Touch</h2>
       <div class="contact-block">
         <blockquote>
-          For inquiries, collaborations, or project discussions, contact us directly at
+          For business inquiries, partnerships, or technical discussions, contact us directly at
           <a href="mailto:contact@avnix.space">contact@avnix.space</a>
         </blockquote>
-        <a class="contact-email" href="mailto:contact@avnix.space">contact@avnix.space</a>
+        <div class="contact-actions">
+          <a class="contact-email" href="mailto:contact@avnix.space">contact@avnix.space</a>
+          <button type="button" class="button outline" id="copy-email" data-email="contact@avnix.space">Copy Email</button>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
     <div class="shell footer-inner">
-      <span class="footer-brand">AVNIX</span>
-      <a href="mailto:contact@avnix.space">contact@avnix.space</a>
+      <span class="footer-brand">AVNIX SPACE</span>
+      <div class="footer-links">
+        <a href="mailto:contact@avnix.space">contact@avnix.space</a>
+        <div class="footer-social" aria-label="Social links">
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 114.126 0 2.063 2.063 0 01-2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </a>
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.495 11.495 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
       <span>&copy; 2026 AVNIX. All rights reserved.</span>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      var EMAIL = "contact@avnix.space";
+
+      var copyBtn = document.getElementById("copy-email");
+      if (copyBtn) {
+        copyBtn.addEventListener("click", function () {
+          var reset = function () {
+            copyBtn.textContent = "Copy Email";
+            copyBtn.classList.remove("copied");
+          };
+
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(EMAIL).then(function () {
+              copyBtn.textContent = "Copied!";
+              copyBtn.classList.add("copied");
+              setTimeout(reset, 2000);
+            }).catch(reset);
+          } else {
+            var input = document.createElement("input");
+            input.value = EMAIL;
+            document.body.appendChild(input);
+            input.select();
+            document.execCommand("copy");
+            document.body.removeChild(input);
+            copyBtn.textContent = "Copied!";
+            copyBtn.classList.add("copied");
+            setTimeout(reset, 2000);
+          }
+        });
+      }
+
+      var reveals = document.querySelectorAll(".reveal");
+      if (reveals.length && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+
+        reveals.forEach(function (el) { observer.observe(el); });
+      } else {
+        reveals.forEach(function (el) { el.classList.add("visible"); });
+      }
+
+      var navLinks = document.querySelectorAll(".nav a[data-nav]");
+      var sections = Array.from(navLinks).map(function (link) {
+        var id = link.getAttribute("href").slice(1);
+        return { link: link, el: document.getElementById(id) };
+      }).filter(function (item) { return item.el; });
+
+      function updateActiveNav() {
+        var scrollY = window.scrollY + 120;
+        var current = sections[0];
+
+        sections.forEach(function (item) {
+          if (item.el.offsetTop <= scrollY) {
+            current = item;
+          }
+        });
+
+        navLinks.forEach(function (link) { link.classList.remove("active"); });
+        if (current) {
+          current.link.classList.add("active");
+        }
+      }
+
+      window.addEventListener("scroll", updateActiveNav, { passive: true });
+      updateActiveNav();
+    })();
+  </script>
 </body>
 </html>
